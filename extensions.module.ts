@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ExtensionsRoutingModule } from './extensions-routing.module';
-import {HomeComponent} from "./pages/home/home.component";
+import {UiLibraryModule} from "../ui-library/ui-library.module";
 
 
 @NgModule({
@@ -10,7 +10,11 @@ import {HomeComponent} from "./pages/home/home.component";
   ],
   imports: [
     CommonModule,
-    ExtensionsRoutingModule
+    ExtensionsRoutingModule,
+    UiLibraryModule,
+  ],
+  exports: [
+    UiLibraryModule,
   ]
 })
 export class ExtensionsModule { }
