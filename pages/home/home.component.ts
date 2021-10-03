@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {GyTablePropertyListModel} from "../../../ui-library/models/gy.table.property.list.model";
+import {UiLibraryUtilsService} from "../../../ui-library/services/ui-library-utils.service";
 
 @Component({
   selector: 'app-home',
@@ -20,17 +21,20 @@ export class HomeComponent implements OnInit {
     {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
     {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
   ];
-  tableData: GyTablePropertyListModel = {
-    modelAttributeName: [
-      'position', 'name', 'weight', 'symbol'
-    ],
-    displayedColumns: [
-      'Posición', 'Nombre', 'Peso', 'Símbolo'
-    ]
-  };
 
+  tableData!: GyTablePropertyListModel;
 
-  constructor() { }
+  constructor(
+    private uiLibraryUtilsService: UiLibraryUtilsService,
+  ) {
+    this.tableData = {
+      modelAttributeNameList: this.uiLibraryUtilsService.getObjectArrayKeys(
+        {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'}),
+      displayedColumnsList: [
+        'Posición', 'Nombre', 'Peso', 'Símbolo'
+      ]
+    };
+  }
 
   ngOnInit(): void {}
 
